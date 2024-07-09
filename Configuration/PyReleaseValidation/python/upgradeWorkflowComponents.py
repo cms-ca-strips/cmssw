@@ -1737,6 +1737,21 @@ upgradeWFs['PatatrackPixelOnlyAlpakaProfiling'] = PatatrackWorkflow(
     offset = 0.404,
 )
 
+upgradeWFs['PatatrackPixelStripOnlyAlpaka'] = PatatrackWorkflow(
+    digi = {
+        '--procModifiers': 'alpaka', # alpaka modifier activates customiseHLTForAlpaka
+    },
+    reco = {
+        '-s': 'RAW2DIGI:RawToDigi_trackerOnly,RECO:reconstruction_pixelTrackingOnly,VALIDATION:@pixelTrackingOnlyValidation,DQM:@pixelTrackingOnlyDQM',
+        '--procModifiers': 'alpaka,stripNtupletFit'
+    },
+    harvest = {
+        '-s': 'HARVESTING:@trackingOnlyValidation+@pixelTrackingOnlyDQM'
+    },
+    suffix = 'Patatrack_PixelStripOnlyAlpaka',
+    offset = 0.442,
+)
+
 # end of Patatrack workflows
 
 class UpgradeWorkflow_ProdLike(UpgradeWorkflow):

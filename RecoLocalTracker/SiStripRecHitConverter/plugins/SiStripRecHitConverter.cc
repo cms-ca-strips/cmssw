@@ -17,6 +17,7 @@ SiStripRecHitConverter::SiStripRecHitConverter(edm::ParameterSet const& conf)
   produces<SiStripRecHit2DCollection>(rphiRecHitsTag);
   produces<SiStripRecHit2DCollection>(stereoRecHitsTag);
   if (doMatching) {
+    std::cout << "Running the module that produces strip hits" << std::endl;
     produces<SiStripMatchedRecHit2DCollection>(matchedRecHitsTag);
     produces<SiStripRecHit2DCollection>(rphiRecHitsTag + "Unmatched");
     produces<SiStripRecHit2DCollection>(stereoRecHitsTag + "Unmatched");
